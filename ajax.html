@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>AJAX Drill</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="ajax.css">
+</head>
+<body>
+    <div id="ajax">
+    <h1>Click Below To View Your Discount!</h1>
+
+    <button type="button" onclick="getDiscount()">View Discount</button>
+</div>
+</body>
+<script>
+    function getDiscount() {
+        var prcnt = new XMLHttpRequest();
+        prcnt.onreadystatechange = function() {
+            if (prcnt.readyState == 4 && prcnt.status == 200) {
+                document.getElementById("ajax").innerHTML = prcnt.responseText;
+            }
+        };
+        prcnt.open("GET", "discount.html", true);
+        prcnt.send();
+    }
+
+</script>
+</html>
