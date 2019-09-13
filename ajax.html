@@ -9,21 +9,26 @@
 <body>
     <div id="ajax">
     <h1>Click Below To View Your Discount!</h1>
-
-    <button type="button" onclick="getDiscount()">View Discount</button>
+    <div id="content">
+        <button type="button" id="btn_content" onclick="getDiscount()">View Discount</button>
+    </div>
 </div>
 </body>
-<script>
-    function getDiscount() {
+<script type="text/javascript">
+    
         var prcnt = new XMLHttpRequest();
-        prcnt.onreadystatechange = function() {
-            if (prcnt.readyState == 4 && prcnt.status == 200) {
-                document.getElementById("ajax").innerHTML = prcnt.responseText;
-            }
-        };
-        prcnt.open("GET", "discount.html", true);
-        prcnt.send();
-    }
 
+        prcnt.open("GET", "/Applications/XAMPP/xamppfiles/htdocs/discount.html");
+
+        prcnt.onreadystatechange = function() {
+            if (prcnt.readyState = 4) {
+                document.getElementById("content").innerHTML = prcnt.responseText;
+            }
+        }
+        function getDiscount() {
+        prcnt.send();
+        document.getElementById("btn_content").style.display = 'none';
+    }
+    
 </script>
 </html>
